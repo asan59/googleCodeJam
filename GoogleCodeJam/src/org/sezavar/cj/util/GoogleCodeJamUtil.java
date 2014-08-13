@@ -31,4 +31,13 @@ public class GoogleCodeJamUtil {
 		return null;
 	}
 
+	public final static int[] lineToInts(String line, String seperator) {
+		String[] tokenized = line.split(seperator);
+		int[] result = new int[tokenized.length];
+		for (int i = 0; i < tokenized.length; i++) {
+			result[i] = Integer.parseInt(tokenized[i].trim());
+		}
+		return result;
+	}
+
 }

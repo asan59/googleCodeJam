@@ -2,7 +2,7 @@ package org.sezavar.cj.util;
 
 public enum InputOutputType {
 	SMALL("small-practice.in", "small.out", 1), LARGE("large-practice.in",
-			"small.out", 2);
+			"large.out", 2),VERY_SMALL("very-small-practice.in", "very-small.out", 1);
 
 	private String inputName;
 	private String outputName;
