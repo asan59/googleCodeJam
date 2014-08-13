@@ -6,7 +6,7 @@ public class ReverseWords extends Problem {
 
 	public static void main(String[] args) {
 		Problem problem = new ReverseWords();
-		problem.solveFor(InputOutputType.VERY_SMALL);
+		problem.solveSetsFor(InputOutputType.VERY_SMALL);
 
 	}
 
