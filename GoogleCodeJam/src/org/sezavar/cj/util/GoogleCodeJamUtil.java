@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GoogleCodeJamUtil {
@@ -36,6 +38,15 @@ public class GoogleCodeJamUtil {
 		int[] result = new int[tokenized.length];
 		for (int i = 0; i < tokenized.length; i++) {
 			result[i] = Integer.parseInt(tokenized[i].trim());
+		}
+		return result;
+	}
+
+	public final static List<Integer> lineToListOfIntegers(String line, String seperator) {
+		String[] tokenized = line.split(seperator);
+		List<Integer> result = new ArrayList<>();
+		for (int i = 0; i < tokenized.length; i++) {
+			result.add(Integer.parseInt(tokenized[i].trim()));
 		}
 		return result;
 	}
