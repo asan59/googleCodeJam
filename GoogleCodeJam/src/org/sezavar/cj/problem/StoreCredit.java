@@ -1,6 +1,6 @@
 package org.sezavar.cj.problem;
 
-import org.sezavar.cj.util.GoogleCodeJamUtil;
+import org.sezavar.cj.util.GcjUtil;
 import org.sezavar.cj.util.InputOutputType;
 
 public class StoreCredit extends Problem {
@@ -19,8 +19,8 @@ public class StoreCredit extends Problem {
 	protected StringBuffer _solveEachSet() {
 		int c = Integer.valueOf(this.reader.nextLine().trim()); // Credit amount
 		int i = Integer.valueOf(this.reader.nextLine()); // Number of items
-		int[] prices = GoogleCodeJamUtil
-				.lineToInts(this.reader.nextLine(), " ");
+		int[] prices = GcjUtil
+				.lineToArrayOfInts(this.reader.nextLine(), " ");
 		for (int j = 0; j < prices.length; j++) {
 			for (int k = j + 1; k < prices.length; k++) {
 				if (prices[j] + prices[k] == c) {

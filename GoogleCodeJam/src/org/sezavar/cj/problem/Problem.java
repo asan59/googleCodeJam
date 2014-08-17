@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import org.sezavar.cj.util.GoogleCodeJamUtil;
+import org.sezavar.cj.util.GcjUtil;
 import org.sezavar.cj.util.InputOutputType;
 
 public abstract class Problem {
@@ -16,10 +16,8 @@ public abstract class Problem {
 		String fullClassName = this.getClass().getName();
 		String className = fullClassName.substring(fullClassName
 				.lastIndexOf(".") + 1);
-		this.reader = GoogleCodeJamUtil
-				.getReaderFor(inputOutputType, className);
-		this.writer = GoogleCodeJamUtil
-				.getWriterFor(inputOutputType, className);
+		this.reader = GcjUtil.getReaderFor(inputOutputType, className);
+		this.writer = GcjUtil.getWriterFor(inputOutputType, className);
 		this.rs = new StringBuffer();
 		this._solve();
 		try {
@@ -36,10 +34,8 @@ public abstract class Problem {
 		String fullClassName = this.getClass().getName();
 		String className = fullClassName.substring(fullClassName
 				.lastIndexOf(".") + 1);
-		this.reader = GoogleCodeJamUtil
-				.getReaderFor(inputOutputType, className);
-		this.writer = GoogleCodeJamUtil
-				.getWriterFor(inputOutputType, className);
+		this.reader = GcjUtil.getReaderFor(inputOutputType, className);
+		this.writer = GcjUtil.getWriterFor(inputOutputType, className);
 		this.rs = new StringBuffer();
 		int n = Integer.valueOf(this.reader.nextLine());
 		long startTime = System.currentTimeMillis();
@@ -66,6 +62,10 @@ public abstract class Problem {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	protected int readInt() {
+		return Integer.valueOf(this.reader.nextLine());
 	}
 
 	protected abstract StringBuffer _solve();
