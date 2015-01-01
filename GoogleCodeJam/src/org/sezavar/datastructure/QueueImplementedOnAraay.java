@@ -1,5 +1,7 @@
 package org.sezavar.datastructure;
 
+import java.time.temporal.IsoFields;
+
 import org.sezavar.datastructure.exception.OverFlowException;
 import org.sezavar.datastructure.exception.UnderFlowException;
 
@@ -19,7 +21,7 @@ public class QueueImplementedOnAraay<T> {
 	}
 
 	public void enqueue(T value) throws OverFlowException {
-		if (!isQueueEmpty && this.tail == this.head) {
+		if (isFull()) {
 			throw new OverFlowException();
 		}
 		this.array[tail] = value;
@@ -29,7 +31,7 @@ public class QueueImplementedOnAraay<T> {
 	}
 
 	public T dequeue() throws UnderFlowException {
-		if (isQueueEmpty) {
+		if (isEmpty()) {
 			throw new UnderFlowException();
 		}
 		T value = (T) this.array[this.head];
@@ -39,6 +41,17 @@ public class QueueImplementedOnAraay<T> {
 		}
 		System.out.println("dequeue " + value);
 		return value;
+	}
+
+	private boolean isFull() {
+		if (this.head == this.tail && !this.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isEmpty() {
+		return isQueueEmpty;
 	}
 
 	public static void main(String[] args) {
@@ -59,7 +72,7 @@ public class QueueImplementedOnAraay<T> {
 		}
 		for (int i = 0; i < 6; i++) {
 			try {
-				queue.enqueue(i*5);
+				queue.enqueue(i * 5);
 			} catch (OverFlowException e) {
 				System.out.println("overflow");
 			}
@@ -73,7 +86,7 @@ public class QueueImplementedOnAraay<T> {
 		}
 		for (int i = 0; i < 3; i++) {
 			try {
-				queue.enqueue(i*10);
+				queue.enqueue(i * 10);
 			} catch (OverFlowException e) {
 				System.out.println("overflow");
 			}
@@ -85,6 +98,6 @@ public class QueueImplementedOnAraay<T> {
 				System.out.println("underflow");
 			}
 		}
-		
+
 	}
 }
