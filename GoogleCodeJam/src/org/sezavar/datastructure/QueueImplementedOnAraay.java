@@ -1,10 +1,18 @@
 package org.sezavar.datastructure;
 
-import java.time.temporal.IsoFields;
-
 import org.sezavar.datastructure.exception.OverFlowException;
 import org.sezavar.datastructure.exception.UnderFlowException;
 
+/**
+ * @author amir<br>
+ *         This is an implementation of queue using array, for array with length
+ *         of n, the queue capacity would be n-1<br>
+ *         if head==tail => queue is empty<br>
+ *         if head==tail+1 => queue is full<br>
+ * 
+ * 
+ * @param <T>
+ */
 public class QueueImplementedOnAraay<T> {
 	private Object[] array;
 	private int head = 0;
@@ -21,26 +29,25 @@ public class QueueImplementedOnAraay<T> {
 	}
 
 	public void enqueue(T value) throws OverFlowException {
-		if (isFull()) {
+		int newTail = (this.tail + 1) % this.array.length;
+		if (newTail == this.head) {
 			throw new OverFlowException();
+		} else {
+			System.out.println("enqueue: " + value);
+			this.array[tail] = value;
+			this.tail = newTail;
 		}
-		this.array[tail] = value;
-		this.tail = (this.tail + 1) % this.array.length;
-		this.isQueueEmpty = false;
-		System.out.println("enqueue " + value);
 	}
 
 	public T dequeue() throws UnderFlowException {
-		if (isEmpty()) {
-			throw new UnderFlowException();
-		}
-		T value = (T) this.array[this.head];
-		this.head = (this.head + 1) % this.array.length;
 		if (this.head == this.tail) {
-			this.isQueueEmpty = true;
+			throw new UnderFlowException();
+		} else {
+			T value = (T) this.array[head];
+			this.head = (this.head + 1) % this.array.length;
+			System.out.println("dequeue: " + value);
+			return value;
 		}
-		System.out.println("dequeue " + value);
-		return value;
 	}
 
 	private boolean isFull() {
